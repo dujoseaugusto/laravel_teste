@@ -5,6 +5,7 @@ namespace Tests\Feature\Contacts;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 /**
@@ -20,7 +21,15 @@ class ContactCreateTest extends TestCase
      */
     public function canCreateContact(){
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+        
         $contactFake = Contact::factry()->make();
+
+        Livewire::test(ContactNew::class)
+            ->call('mount',$contactFake)
+            ->call('store')
+            ->assertEmitted('created');
+        
+        $this->assertDatabaseHas('contacts',$contactFake->toArray());
     }
     
 }
