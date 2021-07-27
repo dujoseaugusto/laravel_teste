@@ -17,6 +17,9 @@
                                 <div class="w-64">{{ $item->name }}</div>
                                 <div class="w-64">{{ $item->email }}</div>
                                 <div class="w-64">{{ $item->phone }}</div>
+                                <div>
+                                    @livewire('contacts.contact-item',['contact' => $item], key($item->id))
+                                </div>
                             </div>
                         @endforeach
                         {{$this->list->links()}}
