@@ -18,6 +18,7 @@ class ContactNew extends Component
         $this->newContact->save();
         $this->newContact = new Contact();
         $this->emit('created');
+        $this->emitTo('contacts.contact-list', 'refreshList');  
     }
     public function render()
     {
