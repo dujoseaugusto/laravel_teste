@@ -36,7 +36,7 @@ class ContactTest extends TestCase
 
         $this->assertDatabaseHas('contacts', $contactFake->toArray());
     }
-
+ 
     /**
      * @test
      */
@@ -63,8 +63,7 @@ class ContactTest extends TestCase
 
         $contactFake = Contact::factory()
             ->make([
-                'email' => 'invalid',
-                'team_id' => $user->currentTeam->id,
+                'email' => 'invalid'
             ]);
 
         Livewire::test(ContactNew::class)
