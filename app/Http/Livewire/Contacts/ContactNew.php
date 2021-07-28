@@ -9,7 +9,7 @@ class ContactNew extends Component
 {
     public Contact $newContact;
 
-    public function mount(Contact $contact){
+    public function mountNew(Contact $contact){
         $this->newContact = $contact;
     }
 
